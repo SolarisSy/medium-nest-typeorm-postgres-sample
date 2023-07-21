@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, ManyToOne } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, ManyToOne, Generated } from 'typeorm';
 import { User } from '../user/user.entity';
 
 @Entity()
@@ -6,8 +6,9 @@ export class Rooms {
   @PrimaryGeneratedColumn()
   public id!: number;
 
-  @Column({ type: 'varchar' })
-  public codigo: string;
+  @Generated('increment')
+  @Column({ type: 'int', unique: true })
+  public codigo: number;
 
   @Column({ type: 'varchar', length: 120 })
   public n_quarto: string;

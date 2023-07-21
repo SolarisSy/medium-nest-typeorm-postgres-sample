@@ -1,11 +1,12 @@
 import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, OneToMany } from 'typeorm';
 import { Rooms } from '../rooms/rooms.entity';
+import { Requests } from '../requests/requests.entity';
 @Entity()
 export class User {
   @PrimaryGeneratedColumn()
   public id!: number;
 
-  @Column({ type: 'varchar' })
+  @Column({ type: 'varchar', default: 'valor_padrao_aqui' })
   public n_cadastro: string;
 
   @Column({ type: 'varchar', length: 120 })
@@ -19,6 +20,9 @@ export class User {
 
   @OneToMany(() => Rooms, (room) => room.owner)
   rooms: Rooms[];
+
+  @OneToMany(() => Requests, (request) => request.owner)
+  requests: Requests[];
 
   /*
    * Create and Update Date Columns

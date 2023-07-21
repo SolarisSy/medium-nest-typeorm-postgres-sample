@@ -3,10 +3,6 @@ import { IsBoolean, IsNotEmpty, IsString } from 'class-validator';
 export class CreateRoomsDto {
   @IsString()
   @IsNotEmpty()
-  public codigo?: string;
-
-  @IsString()
-  @IsNotEmpty()
   public n_quarto?: string;
 
   @IsString()
