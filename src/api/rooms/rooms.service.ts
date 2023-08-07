@@ -14,7 +14,7 @@ export class RoomsService {
   ) {}
 
   async findAllRooms(): Promise<Rooms[]> {
-    return this.roomsRepository.find();
+    return this.roomsRepository.find({ relations: ['owner'] });
   }
 
   async getRooms(id: number): Promise<Rooms> {

@@ -10,19 +10,18 @@ export class Requests {
   @Column({ type: 'int', unique: true })
   public codigo: number;
 
-  @Column({ type: 'varchar', length: 120 })
-  public valor: string;
+  @Column({ type: 'float' })
+  public valor: number;
 
-  @ManyToOne(() => User, (user) => user.requests, { onDelete: 'CASCADE' })
+  @Column({ type: 'varchar', length: 24 })
+  public paymentmethod: string;
+
+  @ManyToOne(() => User, (user) => user.requests, { onDelete: 'NO ACTION' })
   owner: User;
 
-  /*
-   * Create and Update Date Columns
-   */
-
   @CreateDateColumn({ type: 'timestamp' })
-  public createdAt!: Date;
+  public createdat!: Date;
 
   @UpdateDateColumn({ type: 'timestamp' })
-  public updatedAt!: Date;
+  public updatedat!: Date;
 }

@@ -1,13 +1,13 @@
-import { Body, Controller, Delete, Get, Param, ParseIntPipe, Patch, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, ParseIntPipe, Patch, Post, UseGuards } from '@nestjs/common';
 import { Requests } from './requests.entity';
+// import { AuthGuard } from '@nestjs/passport';
 import { RequestsService } from './requests.service';
-// import { UpdateRoomsDto } from './update-requests.dto';
-// import { DeleteResult } from 'typeorm';
 import { CreateRequestsDto } from './create-requests.dto';
 import { DeleteResult } from 'typeorm';
 import { UpdateRequestsDto } from './update-requests.dto';
 
 @Controller('request')
+// @UseGuards(AuthGuard('jwt'))
 export class RequestsController {
   constructor(private readonly requestsService: RequestsService) {}
 

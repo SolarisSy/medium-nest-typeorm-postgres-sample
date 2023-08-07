@@ -82,6 +82,7 @@ export class UserService {
   async createRequest(createRequestsDto: CreateRequestsDto): Promise<Requests> {
     const request: Requests = new Requests();
     request.valor = createRequestsDto.valor;
+    request.paymentmethod = createRequestsDto.paymentmethod;
 
     return this.requestsRepository.save(request);
   }

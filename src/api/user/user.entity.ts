@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, OneToMany } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, OneToMany, Generated } from 'typeorm';
 import { Rooms } from '../rooms/rooms.entity';
 import { Requests } from '../requests/requests.entity';
 @Entity()
@@ -6,8 +6,9 @@ export class User {
   @PrimaryGeneratedColumn()
   public id!: number;
 
-  @Column({ type: 'varchar', default: 'valor_padrao_aqui' })
-  public n_cadastro: string;
+  @Generated('increment')
+  @Column({ type: 'int', unique: true })
+  public n_cadastro: number;
 
   @Column({ type: 'varchar', length: 120 })
   public name: string;
@@ -29,8 +30,8 @@ export class User {
    */
 
   @CreateDateColumn({ type: 'timestamp' })
-  public createdAt!: Date;
+  public createdat!: Date;
 
   @UpdateDateColumn({ type: 'timestamp' })
-  public updatedAt!: Date;
+  public updatedat!: Date;
 }

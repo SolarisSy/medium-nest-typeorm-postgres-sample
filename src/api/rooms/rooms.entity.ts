@@ -13,8 +13,8 @@ export class Rooms {
   @Column({ type: 'varchar', length: 120 })
   public n_quarto: string;
 
-  @Column({ type: 'varchar', length: 120 })
-  public valor: string;
+  @Column({ type: 'float' })
+  public valor: number;
 
   @Column({ type: 'boolean', default: false })
   public situacao: boolean;
@@ -25,13 +25,12 @@ export class Rooms {
   @Column({ type: 'timestamp' })
   public data_saida: Date;
 
-  @ManyToOne(() => User, user => user.rooms, { onDelete: 'CASCADE' })
+  @ManyToOne(() => User, (user) => user.rooms, { onDelete: 'NO ACTION' })
   owner: User;
 
   @CreateDateColumn({ type: 'timestamp' })
-  public createdAt!: Date;
+  public createdat!: Date;
 
   @UpdateDateColumn({ type: 'timestamp' })
-  public updatedAt!: Date;
-
+  public updatedat!: Date;
 }

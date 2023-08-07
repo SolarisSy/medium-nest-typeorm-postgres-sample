@@ -15,7 +15,7 @@ export class RequestsService {
   ) {}
 
   async findAllRequests(): Promise<Requests[]> {
-    return this.requestsRepository.find();
+    return this.requestsRepository.find({ relations: ['owner'] });
   }
 
   async createRequest(createRequestsDto: CreateRequestsDto): Promise<Requests> {
